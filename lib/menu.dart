@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 class ShopItem {
   final String name;
   final IconData icon;
-
-  ShopItem(this.name, this.icon);
+  final Color color;
+  ShopItem(this.name, this.icon, this.color);
 }
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
   final List<ShopItem> items = [
-    ShopItem("Lihat Produk", Icons.checklist),
-    ShopItem("Tambah Produk", Icons.add_shopping_cart),
-    ShopItem("Logout", Icons.logout),
+    ShopItem("Lihat Produk", Icons.checklist, Colors.blue),
+    ShopItem("Tambah Produk", Icons.add_shopping_cart, Colors.redAccent),
+    ShopItem("Logout", Icons.logout, Colors.teal),
   ];
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class ShopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.indigo,
+      color: item.color,
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () {
