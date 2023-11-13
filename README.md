@@ -189,3 +189,201 @@ return Material(
   child: InkWell(
   ...
 ```
+
+### Tugas 8
+## Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+Perbedaan utama antara keduanya adalah bagaimana mereka memanipulasi tumpukan (stack) navigasi.
+
+1. Navigator.push():
+- Metode ini digunakan untuk menambahkan halaman baru ke dalam tumpukan navigasi.
+- Saat menggunakan Navigator.push(), halaman yang baru ditambahkan akan ditumpuk di atas halaman yang sedang ditampilkan.
+- Ini berarti pengguna dapat kembali ke halaman sebelumnya dengan menekan tombol kembali pada perangkat mereka.
+- Contoh penggunaan ```Navigator.push()```:
+```dart
+// Navigasi dari halaman saat ini ke halaman DetailScreen
+Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen()));
+```
+
+2. Navigator.pushReplacement():
+- Metode ini juga digunakan untuk menambahkan halaman baru ke dalam tumpukan navigasi, tetapi dengan perbedaan utama bahwa halaman saat ini digantikan oleh halaman baru.
+- Ini berarti pengguna tidak dapat kembali ke halaman sebelumnya dengan menekan tombol kembali karena halaman sebelumnya digantikan.
+- Ini berguna ketika ingin mengganti halaman saat ini dengan halaman yang berbeda, misalnya saat pengguna berhasil masuk atau Anda ingin menghindari pengguna kembali ke halaman login.
+- Contoh penggunaan ```Navigator.pushReplacement()```:
+```dart
+// Navigasi dari halaman saat ini ke halaman HomeScreen dan menggantikan halaman saat ini
+Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+```
+## Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+1. Container:
+
+Container adalah widget tata letak yang serbaguna dan dapat digunakan untuk menggabungkan beberapa widget ke dalam satu kotak.
+Ini sering digunakan untuk mengatur widget dalam susunan yang sederhana dan mengendalikan properti seperti margin, padding, dan warna latar belakang.
+2. Row dan Column:
+
+Row dan Column adalah widget tata letak yang digunakan untuk mengatur widget dalam baris horizontal (Row) atau vertikal (Column).
+Mereka berguna saat Anda perlu menyusun widget dalam urutan tertentu.
+3. ListView:
+
+ListView adalah widget tata letak yang digunakan untuk membuat daftar bergulir dari widget.
+Ini cocok untuk tampilan daftar item yang panjang atau tak terbatas, seperti daftar kontak atau berita.
+4. Stack:
+
+Stack adalah widget tata letak yang memungkinkan Anda menempatkan widget di atas satu sama lain.
+Ini berguna untuk menggabungkan beberapa widget dan mengatur tumpukan tampilan, seperti tombol overlay, gambar latar belakang, atau teks atas gambar.
+5. Card:
+
+Card adalah widget tata letak yang digunakan untuk membuat elemen kartu dengan bayangan, latar belakang, dan konten.
+Ini digunakan untuk menggambarkan informasi seperti kartu kontak, berita, atau entri dalam aplikasi.
+6. Expanded dan Flexible:
+
+Expanded dan Flexible adalah widget tata letak yang digunakan dalam Row dan Column untuk mengendalikan sejauh mana widget harus diperluas atau fleksibel.
+Ini berguna untuk mengatur perbandingan ruang yang diberikan kepada widget dalam tata letak yang memiliki widget anak dengan ukuran yang berbeda.
+7. GridView:
+
+GridView adalah widget tata letak yang digunakan untuk mengatur widget dalam bentuk kotak atau grid.
+Ini berguna saat Anda perlu menampilkan konten dalam format berkolom dan berbaris, seperti galeri gambar atau aplikasi papan permainan.
+8. Wrap:
+
+Wrap adalah widget tata letak yang digunakan untuk mengatur widget dalam baris horizontal atau vertikal, tetapi jika ruang tidak cukup, widget akan memindahkan ke baris atau kolom berikutnya.
+Ini berguna untuk mengatasi situasi di mana ada banyak widget anak yang perlu diatur dalam ruang yang terbatas.
+9. Flow:
+
+Flow adalah widget tata letak yang mengatur widget anak dalam bentuk aliran yang dapat menyesuaikan diri dengan tampilan tanpa membatasi ruang atau ukuran widget.
+Ini berguna saat Anda ingin menampilkan widget dalam tampilan yang sangat dinamis.
+10. SingleChildScrollView:
+
+SingleChildScrollView adalah widget tata letak yang digunakan untuk membuat konten bergulir dalam satu arah (biasanya vertikal).
+Ini digunakan saat Anda memiliki sedikit konten yang perlu digulir dan ingin menghindari tampilan kesulitan geser vertikal.
+
+## Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+1. TextFormField (Nama Produk):
+
+Saya menggunakan TextFormField untuk mengumpulkan nama produk karena nama produk adalah teks atau string. Dengan TextFormField, pengguna dapat memasukkan teks sesuai dengan nama produk yang akan ditambahkan. Elemen ini juga menyediakan tampilan yang nyaman dengan label "Nama Produk" dan memberikan pemberitahuan validasi jika pengguna tidak memasukkan nama produk.
+2. TextFormField (Harga):
+
+Saya menggunakan TextFormField untuk mengumpulkan harga produk karena harga adalah data numerik (angka). Dengan TextFormField, pengguna dapat memasukkan angka harga produk. Saya juga menambahkan validasi untuk memastikan bahwa pengguna memasukkan angka sebagai harga, bukan teks atau karakter lain.
+3. TextFormField (Deskripsi):
+
+Saya menggunakan TextFormField untuk mengumpulkan deskripsi produk karena deskripsi adalah teks atau string yang menjelaskan produk tersebut. Dengan TextFormField, pengguna dapat dengan mudah memasukkan teks deskripsi produk.
+## Bagaimana penerapan clean architecture pada aplikasi Flutter?
+Penerapan Clean Architecture pada aplikasi Flutter melibatkan pemisahan kode menjadi empat lapisan utama, yaitu Entitas, Use Cases (logika sistem), Controller, dan UI (antarmuka pengguna). Berikut adalah penjelasan lebih detail tentang setiap lapisan:
+
+1. Entitas (Entities):
+Lapisan Entitas berisi representasi dari objek-objek inti atau konsep bisnis dalam aplikasi. Ini adalah tempat di mana aturan bisnis inti didefinisikan.
+Entitas biasanya tidak tergantung pada teknologi atau infrastruktur tertentu dan dapat digunakan kembali dalam berbagai konteks.
+Di Flutter, entitas ini mungkin berupa kelas atau model yang mewakili objek atau data dalam aplikasi.
+
+2. Use Cases atau Logika Sistem (Use Cases):
+Lapisan Use Cases berisi logika bisnis aplikasi, seperti alur tindakan yang memanipulasi entitas.
+Use cases mendefinisikan operasi-operasi yang dapat dilakukan pada entitas dan mengatur aliran bisnis.
+Lapisan ini terisolasi dari detail teknis dan infrastruktur dan dapat diuji dengan baik.
+
+3. Controller:
+Lapisan Controller adalah bagian dari logika aplikasi yang menghubungkan lapisan use cases dengan lapisan UI.
+Ini dapat berperan sebagai perantara yang mengelola perubahan data dan mengirimkan pembaruan ke UI.
+Di Flutter, lapisan ini dapat diwakili oleh komponen seperti BLoC (Business Logic Component) atau konsep serupa.
+
+4. UI atau Web:
+Lapisan UI adalah komponen yang bertanggung jawab untuk menampilkan antarmuka pengguna dan berinteraksi langsung dengan pengguna.
+Lapisan ini terdiri dari widget, halaman, tata letak, dan elemen tampilan yang membangun antarmuka pengguna aplikasi.
+Ini tidak boleh memiliki logika bisnis yang kompleks, melainkan hanya merespons tindakan pengguna dan memproses tampilan.
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+
+# Membuat minimal satu halaman baru pada aplikasi, yaitu halaman formulir tambah item baru dengan ketentuan sebagai berikut:
+- Memakai minimal tiga elemen input, yaitu ```name```, ```amount```, ```description```. Tambahkan elemen input sesuai dengan model pada aplikasi tugas Django yang telah kamu buat.
+- Memiliki sebuah tombol ```Save```.
+- Setiap elemen input di formulir juga harus divalidasi dengan ketentuan sebagai berikut:
+  Setiap elemen input tidak boleh kosong.
+  Setiap elemen input harus berisi data dengan tipe data atribut modelnya.
+
+1. Buat sebuah widget yang akan menjadi halaman formulir tambah item baru. Anda dapat membuat widget ini dalam berkas Dart baru, misalnya "shoplist_form.dart".
+
+2. Desain UI Form:
+- Dalam widget tersebut, gunakan widget Form sebagai kontainer utama untuk elemen-elemen input.
+- Tambahkan TextFormField untuk tiga elemen input: name, amount, dan description.
+
+3. Tambahkan tombol ```Save``` dengan widget ElevatedButton untuk menyimpan item yang baru.
+
+4. Validasi input sesuai dengan ketentuan yang diberikan. Anda dapat menggunakan validator pada setiap TextFormField untuk memastikan bahwa setiap elemen input tidak boleh kosong dan harus memiliki tipe data yang sesuai dengan atribut model.
+
+# Mengarahkan pengguna ke halaman form tambah item baru ketika menekan tombol Tambah Item pada halaman utama.
+Gunakan MaterialPageRoute yang mencakup ShopFormPage dengan code seperti berikut:
+```dart
+if (item.name == "Tambah Produk") {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const ShopFormPage()));
+          }
+```
+# Memunculkan data sesuai isi dari formulir yang diisi dalam sebuah pop-up setelah menekan tombol Save pada halaman formulir tambah item baru.
+1. Menggunakan widget AlertDialog untuk menampilkan pop-up seperti berikut:
+```dart
+AlertDialog(
+  title: const Text('Produk berhasil tersimpan'),
+  content: SingleChildScrollView(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Nama: $_name'),
+        Text('Harga: $_price'),
+        Text('Deskripsi: $_description'),
+      ],
+    ),
+  ),
+  actions: [
+    TextButton(
+      child: const Text('OK'),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    ),
+  ],
+);
+```
+2. Kemudian Menampilkan dialog ketika tombol ```Save``` ditekan. Tambahkan kode untuk menampilkan dialog dalam event handler tombol ```Save``` yang ada di halaman formulir.
+```dart
+ElevatedButton(
+  style: ButtonStyle(
+    backgroundColor: MaterialStateProperty.all(Colors.indigo),
+  ),
+  onPressed: () {
+    if (_formKey.currentState!.validate()) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            // ... (seperti yang dijelaskan sebelumnya)
+          );
+        },
+      );
+    }
+    _formKey.currentState!.reset();
+  },
+  child: const Text(
+    "Save",
+    style: TextStyle(color: Colors.white),
+  ),
+),
+```
+# Membuat sebuah drawer pada aplikasi dengan ketentuan sebagai berikut:
+- Drawer minimal memiliki dua buah opsi, yaitu Halaman Utama dan Tambah Item.
+- Ketika memiih opsi Halaman Utama, maka aplikasi akan mengarahkan pengguna ke halaman utama.
+- Ketika memiih opsi (Tambah Item), maka aplikasi akan mengarahkan pengguna ke halaman form tambah item baru.
+
+1. Impor kelas-kelas yang dibutuhkan, seperti ```MyHomePage``` (halaman utama) dan ```ShopFormPage``` (halaman formulir tambah item).
+
+2. Buat widget ```LeftDrawer``` yang mewakili drawer dalam aplikasi. Ini adalah tampilan yang akan ditampilkan dalam drawer.
+
+3. Gunakan widget Drawer untuk menentukan isi drawer.
+Di dalamnya, gunakan ```ListView``` untuk membuat daftar vertikal dari opsi.
+
+4. Tambahkan bagian header pada drawer dengan menggunakan DrawerHeader.
+Header ini memiliki latar belakang warna biru (indigo) dan berisi judul "Shopping List" serta deskripsi singkat aplikasi.
+
+5. Tambahkan dua opsi dalam drawer menggunakan ListTile.
+Opsi pertama adalah ```Halaman Utama``` dan ikonnya adalah ikon rumah (home).
+Opsi kedua adalah ```Tambah Item``` dan ikonnya adalah ikon keranjang belanja (shopping cart).
+
+6. Atur perilaku ketika opsi dipilih dengan menambahkan onTap handler.
+Saat ```Halaman Utama``` dipilih, gunakan Navigator untuk mengarahkan pengguna ke halaman utama (MyHomePage).
+Saat ```Tambah Item``` dipilih, gunakan Navigator untuk mengarahkan pengguna ke halaman formulir tambah item baru (ShopFormPage).
+
