@@ -8,6 +8,27 @@ class ShopFormPage extends StatefulWidget {
   State<ShopFormPage> createState() => _ShopFormPageState();
 }
 
+class Item {
+  final String name;
+  final int price;
+  final String description;
+
+  Item({
+    required this.name,
+    required this.price,
+    required this.description,
+  });
+}
+
+class ItemStorage {
+  static final List<Item> _items = [];
+  static void addItem(Item item) {
+    _items.add(item);
+  }
+
+  static List<Item> get items => _items;
+}
+
 class _ShopFormPageState extends State<ShopFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
@@ -113,6 +134,11 @@ class _ShopFormPageState extends State<ShopFormPage> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        ItemStorage.addItem(Item(
+                          name: _name,
+                          price: _price,
+                          description: _description,
+                        ));
                         showDialog(
                           context: context,
                           builder: (context) {

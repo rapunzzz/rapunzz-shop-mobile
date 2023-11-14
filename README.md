@@ -387,3 +387,68 @@ Opsi kedua adalah ```Tambah Item``` dan ikonnya adalah ikon keranjang belanja (s
 Saat ```Halaman Utama``` dipilih, gunakan Navigator untuk mengarahkan pengguna ke halaman utama (MyHomePage).
 Saat ```Tambah Item``` dipilih, gunakan Navigator untuk mengarahkan pengguna ke halaman formulir tambah item baru (ShopFormPage).
 
+## Implementasi Bonus
+- Buat class baru untuk menyimpan produknya di file ```shoplist_form.dart``` seperti berikut :
+```dart
+class Item {
+  final String name;
+  final int price;
+  final String description;
+
+  Item({
+    required this.name,
+    required this.price,
+    required this.description,
+  });
+}
+
+class ItemStorage {
+  static final List<Item> _items = [];
+  static void addItem(Item item) {
+    _items.add(item);
+  }
+
+  static List<Item> get items => _items;
+}
+```
+- Masukkan produk tiap input pada form di file ```shoplist_form.dart``` dan tampilkan tiap button ```OK``` di pilih, seperti berikut :
+```dart
+onPressed: () {
+  if (_formKey.currentState!.validate()) {
+    ItemStorage.addItem(Item(
+      name: _name,
+      price: _price,
+      description: _description,
+    ));
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Produk berhasil tersimpan'),
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Nama: $_name'),
+                Text('Harga: $_price'),
+                Text('Deskripsi: $_description'),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+  _formKey.currentState!.reset();
+},
+```
+- Buat file baru untuk halaman yang menampilkan daftar produk yang ditambahkan dengan nama ```list_item.dart``` dan buat code untuk menampilkan daftar produknya
+- Routing pada button ```Lihat Produk``` ke ```ItemListPage``` di file ```shop_card.dart```

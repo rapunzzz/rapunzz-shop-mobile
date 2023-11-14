@@ -1,5 +1,6 @@
 import 'package:rapunzz_shop/screens/shoplist_form.dart';
 import 'package:flutter/material.dart';
+import 'package:rapunzz_shop/screens/list_item.dart';
 
 class ShopItem {
   final String name;
@@ -11,7 +12,7 @@ class ShopItem {
 class ShopCard extends StatelessWidget {
   final ShopItem item;
 
-  const ShopCard(this.item, {super.key}); // Constructor
+  const ShopCard(this.item, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,10 @@ class ShopCard extends StatelessWidget {
           if (item.name == "Tambah Produk") {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const ShopFormPage()));
+          }
+          if (item.name == "Lihat Produk") {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const ItemListPage()));
           }
         },
         child: Container(
