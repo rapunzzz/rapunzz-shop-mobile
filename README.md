@@ -452,3 +452,64 @@ onPressed: () {
 ```
 - Buat file baru untuk halaman yang menampilkan daftar produk yang ditambahkan dengan nama ```list_item.dart``` dan buat code untuk menampilkan daftar produknya
 - Routing pada button ```Lihat Produk``` ke ```ItemListPage``` di file ```shop_card.dart```
+
+### Tugas 9
+
+## Pengambilan Data JSON Tanpa Membuat Model Terlebih Dahulu
+
+Pendekatan tanpa membuat model terlebih dahulu memanfaatkan dart:convert di Flutter. Ini memungkinkan pengambilan data JSON secara dinamis, memberikan kecepatan dan fleksibilitas untuk prototyping dan pengembangan awal.
+
+**Keuntungan:**
+- Cepat dan fleksibel untuk prototyping dan pengembangan awal.
+
+**Kekurangan:**
+- Kurangnya type safety, lebih rentan terhadap kesalahan runtime jika struktur JSON berubah.
+
+Membuat Model untuk Pengambilan Data JSON
+
+Membuat model sebelumnya memberikan keuntungan dalam type safety, memudahkan pengelolaan data, dan memanfaatkan fitur-fitur OOP untuk kode yang lebih terstruktur.
+
+**Keuntungan:**
+- Type safety, memudahkan pengelolaan data, dan memanfaatkan fitur-fitur OOP.
+
+**Kekurangan:**
+- Memerlukan waktu lebih untuk setup awal dan penyesuaian jika ada perubahan pada struktur JSON backend.
+
+## Fungsi CookieRequest
+
+CookieRequest berguna untuk menyimpan sesi pengguna yang sudah login di dalam aplikasi Flutter. Ini memudahkan integrasi dengan webserver untuk fitur-fitur seperti logout, itemForm, dan pengambilan data pengguna yang sedang login.
+
+## Mekanisme Pengambilan dan Tampilan Data dari JSON ke Flutter
+
+Singkatnya, mekanisme pengambilan dan tampilan data dari JSON ke Flutter melibatkan langkah-langkah berikut:
+1. Membuat class model dengan atribut yang sesuai.
+2. Mengambil JSON dari web server dengan http.get() atau request.get() dan mencantumkan URL endpoint.
+3. Mengubah JSON menjadi List atau Map menggunakan json.decode().
+4. Mengambil data dari List atau Map menggunakan List.map() atau Map.map().
+5. Menampilkan data dengan ListView atau GridView.
+
+## Mekanisme Autentikasi Input Data Akun pada Flutter ke Django
+
+Langkah-langkah autentikasi melibatkan:
+1. Meminta input username dan password dari pengguna.
+2. Membuat CookieRequest baru untuk mengirim data ke web server dan menyimpan sesi pengguna yang sudah diautentikasi.
+3. Mengirim data ke web server menggunakan CookieRequest.post() atau metode login() pada pub pbp_auth dengan mencantumkan URL endpoint.
+4. Jika login berhasil, muncul popup dengan informasi keberhasilan dan pindah ke halaman utama dengan menu.
+
+## Widget yang Digunakan pada Proyek Ini
+
+Selain widget-widget yang sudah dijelaskan pada tugas sebelumnya, proyek ini menggunakan widget-widget berikut:
+
+1. **Drawer**: Membuat drawer dengan menu yang dapat diakses oleh pengguna.
+2. **ListTile**: Digunakan untuk menu pada drawer dan membuat item daftar pada halaman itemlist.dart.
+3. **TextFormField**: Membuat input field pada halaman itemform.dart, login.dart, dan register.dart.
+4. **ElevatedButton**: Digunakan untuk tombol pada halaman itemform.dart, login.dart, dan register.dart.
+5. **AlertDialog**: Membuat popup pada halaman itemform.dart, login.dart, dan register.dart.
+6. **FutureBuilder**: Membangun widget untuk masa depan.
+7. **CircularProgressIndicator**: Membuat indikator loading pada halaman itemlist.dart dan itemform.dart.
+8. **ListView.builder**: Membuat daftar item pada halaman itemlist.dart.
+9. **GridView.builder**: Membuat grid item pada halaman itemlist.dart.
+10. **Card**: Digunakan untuk membuat kartu pada halaman itemlist.dart.
+11. **FloatingActionButton**: Membuat tombol tambah item pada halaman itemlist.dart.
+
+## Implementasi checklist pada soal
