@@ -513,3 +513,59 @@ Selain widget-widget yang sudah dijelaskan pada tugas sebelumnya, proyek ini men
 11. **FloatingActionButton**: Membuat tombol tambah item pada halaman itemlist.dart.
 
 ## Implementasi checklist pada soal
+
+#### 1. Memastikan Deployment Proyek Django:
+
+- **Add, Commit, dan Push:**
+  - Melalui terminal, Anda menggunakan perintah `add`, `commit`, dan `push` untuk mengunggah perubahan proyek Django ke GitHub.
+- **Deployment Workflow:**
+  - Anda mengamati progress deployment di GitHub setelah melakukan push.
+- **Verifikasi Deployment:**
+  - Melalui centang hijau di GitHub, Anda memastikan bahwa deployment proyek Django telah berhasil.
+
+#### 2. Membuat Halaman Login pada Proyek Flutter:
+
+- **Struktur Direktori dan File:**
+  - Anda membuat direktori `/lib/screens/` dan menamainya `login.dart` untuk halaman login.
+- **Widget yang Digunakan:**
+  - Menggunakan `TextField` untuk input, `ElevatedButton` untuk tombol login, dan `AlertDialog` untuk menampilkan pesan.
+  - `TextEditingController` digunakan untuk mengambil nilai dari field input.
+  - `SnackBar` digunakan untuk menampilkan pesan pop-up saat login berhasil.
+- **Proses Autentikasi:**
+  - Autentikasi terjadi melalui method `login` pada objek `CookieRequest` dari package `pbp_django_auth`.
+  - Jika berhasil, pengguna diarahkan ke `MyHomePage`; jika tidak, pesan kesalahan ditampilkan.
+
+#### 3. Mengintegrasikan Sistem Autentikasi Django dengan Proyek Flutter:
+
+- **Buat Django-app "authentication":**
+  - Membuat Django-app bernama "authentication" dan menambahkannya ke `INSTALLED_APPS` di `settings.py`.
+- **CORS dan Keamanan:**
+  - Menggunakan `django-cors-headers` dan konfigurasi di `settings.py` untuk mengatasi masalah keamanan lintas sumber daya.
+- **Endpoint Login:**
+  - Membuat metode view untuk login di `authentication/views.py`.
+  - Menambahkan URL routing untuk login di `authentication/urls.py`.
+  - Menambahkan path `auth/` ke `authentication.urls` di `shopping_list/urls.py`.
+
+#### 4. Membuat Model Kustom sesuai Proyek Aplikasi Django:
+
+- **Pembuatan Model:**
+  - Menggunakan website Quicktype untuk membuat model Dart dari data JSON proyek Django.
+  - Membuat direktori `/lib/models/` dan berkas `item.dart` untuk menyimpan model kustom.
+  - Menempelkan hasil output dari website Quicktype sebagai kerangka kelas model `Item`.
+
+#### 5. Membuat Halaman Daftar dan Detail Item:
+
+- **Halaman Daftar (list_item.dart):**
+  - Membuat halaman baru `list_item.dart` dalam `/lib/screens/`.
+  - Menggunakan `FutureBuilder` untuk mengambil data item dari server secara asinkronus.
+  - Menampilkan data item dalam `ListView.builder` dengan informasi seperti nama, jumlah, harga, dan deskripsi.
+  - Menggunakan `CircularProgressIndicator` selama proses loading.
+  - Menampilkan pesan jika tidak ada data item yang tersedia.
+  
+- **Halaman Detail (item_detail.dart):**
+  - Membuat halaman baru `item_detail.dart` dalam `/lib/screens/`.
+  - Halaman dapat diakses dengan menekan salah satu item di halaman daftar.
+  - Menampilkan seluruh atribut dari model item.
+  - Menambahkan tombol kembali ke halaman daftar item.
+
+Dengan langkah-langkah ini, Anda berhasil menguraikan implementasi tugas-tugas tersebut dengan detail dan langkah-langkah yang jelas.
